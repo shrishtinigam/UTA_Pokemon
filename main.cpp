@@ -17,6 +17,11 @@ class Pokemon
         this->Name=Name;
         this->Health=Health;
     }
+    virtual void getDetails(){}
+    virtual void setAttack_names(){}
+    virtual void setAttack_powers(){}
+    virtual void onAttack(int power){}
+    virtual int chooseAttack(){}
 };
 
 class Fire: public Pokemon
@@ -312,9 +317,30 @@ class Grass: public Pokemon
     
 };
 
+void Fight(Pokemon* p1, Pokemon* p2)
+{
+    p1->getDetails();
+    p1->setAttack_names();
+    p1->setAttack_powers();
+    p2->getDetails();
+    p2->setAttack_names();
+    p2->setAttack_powers();
+    while(true)
+    {
+        p2->onAttack(p1->chooseAttack());
+        p1->onAttack(p2->chooseAttack());
+    }
+}
+
 int main()
 {
     srand(time(0));
+    Fire charizard("Charizard");
+    Water blastoise("Blastoise");
+    Pokemon* p1 = &charizard;
+    Pokemon* p2 = &blastoise;
+    Fight(p1, p2);
+    /*
     Fire charizard("Charizard");
     charizard.setAttack_names();
     charizard.setAttack_powers();
@@ -323,12 +349,12 @@ int main()
     blastoise.setAttack_names();
     blastoise.setAttack_powers();
     blastoise.getDetails();
-    
     while(true)
     {
         blastoise.onAttack(charizard.chooseAttack());
         charizard.onAttack(blastoise.chooseAttack());
     }
+    */
     
     
     
