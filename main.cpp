@@ -319,12 +319,12 @@ class Grass: public Pokemon
 
 void Fight(Pokemon* p1, Pokemon* p2)
 {
-    p1->getDetails();
     p1->setAttack_names();
     p1->setAttack_powers();
-    p2->getDetails();
+    p1->getDetails();
     p2->setAttack_names();
     p2->setAttack_powers();
+    p2->getDetails();
     while(true)
     {
         p2->onAttack(p1->chooseAttack());
